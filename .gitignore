@@ -1,0 +1,14 @@
+.env
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/tsconfig.tsbuildinfo
+
+data/raw/
+data/derived/
+data/processed/*.aux.xml
+outputs/
