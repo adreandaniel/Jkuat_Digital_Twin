@@ -53,7 +53,7 @@ flowchart LR
     S --> G[GeoJSON scenario layer]
     B --> F[React frontend]
     G --> F
-    M[MapLibre map and 3-D terrain view] <-- F
+    M[MapLibre map and 3-D terrain view] --> F
 ```
 
 ## Technology Stack
