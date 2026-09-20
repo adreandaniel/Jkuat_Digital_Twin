@@ -114,31 +114,6 @@ Conduit rainfall observations
 - Optional MapTiler styles, terrain and vector tiles
 - No database or trained AI/ML model is required by the current implementation.
 
-## Repository Structure
-
-```text
-digital-twin/
-├── backend/
-│   ├── app/
-│   │   ├── api/             FastAPI route modules
-│   │   ├── models/          Pydantic request and response models
-│   │   └── services/        Conduit, rainfall, terrain and simulation logic
-│   ├── requirements.txt
-│   └── tests/
-├── data/
-│   ├── reference/           Administrative and study-area boundaries
-│   ├── processed/           QGIS terrain and hydrology products
-│   └── derived/             Derived application layers
-├── frontend/
-│   ├── src/components/      Dashboard UI components
-│   ├── src/map/             Map and layer configuration
-│   ├── src/pages/           Dashboard and simulation pages
-│   └── src/services/        Backend API clients
-├── notebooks/               Exploration, validation and showcase notebooks
-├── python/                  Data-processing pipeline scripts
-└── qgis/                    QGIS project file
-```
-
 ## Installation and Setup
 
 ### Prerequisites
@@ -149,24 +124,6 @@ digital-twin/
 - Access credentials for the JHUB Africa Conduit API for live weather and live flood screening
 - Optional MapTiler API key for MapTiler basemaps and 3-D building tiles
 
-### Configure secrets
-
-Copy `.env.example` to `.env` in the repository root and set:
-
-```env
-JHUB_API_KEY=your_jhub_api_key
-JHUB_EMAIL=your_jhub_email
-MAPTILER_KEY=your_maptiler_key
-```
-
-Never commit `.env`, API keys, passwords or access tokens. The backend reads the root `.env`. The frontend reads its own `frontend/.env` file for browser settings:
-
-```env
-VITE_API_BASE_URL=http://localhost:8000/api/v1
-VITE_MAPTILER_KEY=your_maptiler_key
-```
-
-OpenStreetMap remains available without a MapTiler key.
 
 ### Run the backend
 
@@ -197,25 +154,6 @@ To verify a production frontend build:
 npm run build
 ```
 
-## API Endpoints
-
-All application endpoints use the `/api/v1` prefix.
-
-| Method | Endpoint | Purpose |
-| --- | --- | --- |
-| GET | `/` | Service health check |
-| GET | `/weather/current` | Latest Conduit observation |
-| GET | `/weather/metrics` | Derived rainfall metrics |
-| GET | `/weather/history` | Recent weather observations |
-| GET | `/terrain/summary` | Terrain summary |
-| GET | `/terrain/streams` | Stream GeoJSON |
-| GET | `/terrain/watersheds` | Watershed GeoJSON |
-| GET | `/terrain/hillshade.png` | Hillshade preview |
-| GET | `/terrain/elevation.png` | Elevation preview |
-| GET | `/terrain/dem/{z}/{x}/{y}.png` | Terrain-RGB tile |
-| GET | `/layers/{layer_name}` | Processed layer access |
-| GET | `/flood/current` | Conduit-driven screening scenario |
-| POST | `/simulation/run` | User-defined screening scenario |
 
 ## Testing
 
